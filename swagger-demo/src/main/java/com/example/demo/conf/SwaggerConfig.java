@@ -15,22 +15,17 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 public class SwaggerConfig {
 	
-
-//	@Bean
-//	public Docket productApi() {
-//		return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo());
-//	}
-//	
-//	private ApiInfo apiInfo() {		
-//		return new ApiInfoBuilder().title("my swagger").version("v1.0")
-//				.contact(new Contact("king", "study.com", "king.zx.li@qq.com"))
-//				.build();
-//	}
-	
+	/**
+	 * RequestHandlerSelectors.basePackage("com.example")  配置需要扫描的包
+	 * .paths  过滤什么路径，只️扫描包
+	 * @return
+	 */
 	@Bean
 	public Docket productApi() {
 		return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo()).forCodeGeneration(true).select()
-				.apis(RequestHandlerSelectors.basePackage("com.example")).paths(PathSelectors.any()).build();
+				.apis(RequestHandlerSelectors.basePackage("com.example"))
+				.paths(PathSelectors.any())
+				.build();
 
 	}
 
